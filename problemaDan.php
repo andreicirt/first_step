@@ -1,5 +1,5 @@
 <?php
-require_once ('mysqldatabase.php');
+require_once ('MySQLDatabase.php');
 
 //if(isset($database)){echo"true";} else {echo "false";}
 //echo "<br/>";
@@ -73,6 +73,11 @@ require_once ('mysqldatabase.php');
         public function getEchipa()
         {
             return $this->numeEchipa;
+        }
+
+        public function getInsetDataToDbSql() {
+            $sql = "INSERT INTO angajati (nume_angajat,nume_echipa,data_angajare,tip_angajat)";
+            $sql .= " VALUES ( {$this->getName()},{$this->getEchipa()},now(),'ROOKIE')";
         }
     }
 

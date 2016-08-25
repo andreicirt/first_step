@@ -43,25 +43,23 @@ class MySQLDatabase
     public function query ($sql)
     {
         $result = mysqli_query($this->connection,$sql);
-        $this->confirm_query($result);
+        $this->confirm_query($result, mysqli_error($this->connection));
 
         return $result;
     }
-    private function confirm_query ($result)
+    private function confirm_query ($result, $error)
     {
         if(!$result){
-            die("Database query failed.");
+            die("Database query failed :(. Error reported: ". $error);
         }
     }
     public function mysql_prep ($string)
     {
-        global $connection;
-
-        $escaped_string = myqli_real_escape_string($connection,$string);
+        $escaped_string = mysqli_real_escape_string($this->connection,$string);
         return $escaped_string;
     }
 
 }
 
-$database = new MySQLDatabase();
-$db =& $database;
+//$database = new MySQLDatabase();
+//$db =& $database;
