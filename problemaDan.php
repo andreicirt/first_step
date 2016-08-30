@@ -64,6 +64,11 @@ require_once ('MySQLDatabase.php');
             return $this->age;
         }
 
+        public function getDateDiffFromDb ()
+        {
+            $sql = "select DATEDIFF(NOW(),i.data_angajare) from angajati i where i.nume_angajat={$this->getName()}";
+        }
+
 
         public function setEchipa($echipa)
         {
@@ -75,9 +80,10 @@ require_once ('MySQLDatabase.php');
             return $this->numeEchipa;
         }
 
-        public function getInsetDataToDbSql() {
-            $sql = "INSERT INTO angajati (nume_angajat,nume_echipa,data_angajare,tip_angajat)";
-            $sql .= " VALUES ( {$this->getName()},{$this->getEchipa()},now(),'ROOKIE')";
+        public function getInsertDataToDbSql()
+        {
+            $sql = "INSERT INTO angajati (nume_angajat,nume_echipa,tip_angajat,id_manager,data_angajare)";
+            $sql .= " VALUES ( {$this->getName()},{$this->getEchipa()},'ROOKIE','18',now())";
         }
     }
 
@@ -97,6 +103,14 @@ require_once ('MySQLDatabase.php');
             $this->nrSubalterni;
         }
 
+        public function getNrSubalternifromDb()
+        {
+            $sql = "select count(*)
+                    from angajati v
+                    inner join echipe b
+                    on v.id_manager=b.id_manager
+                    and b.manager_echipa='{$this->getName()}'";
+        }
         public function setRank($rang)
         {
             $this->rank = $rang;
@@ -171,6 +185,9 @@ require_once ('MySQLDatabase.php');
         {
             return $this->nrMembri = count($this->membri);
         }
+        public function getNrMembriiFromDb(){
+            $sql = "select count(*) from angajati v1 where v1.nume_echipa='{$this->ge}';"
+        }
 
         public function getMembri()
         {
@@ -226,6 +243,11 @@ require_once ('MySQLDatabase.php');
         public function getNrEchipe()
         {
             return $this->nrEchipe = count($this->echipe);
+        }
+
+        public function getNrEchipeFromDb()
+        {
+            sql = "select count(*) from echipe v0 where v0.nume_departament={$this->printNumeDep()}"
         }
 
         public function getEchipe()
