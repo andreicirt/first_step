@@ -7,7 +7,7 @@
  * Time: 13:09
  */
 
-require_once ("config.php");
+require_once("config.php");
 
 class MySQLDatabase
 {

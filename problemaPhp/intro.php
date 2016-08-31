@@ -6,31 +6,44 @@
  * Time: 16:59
  */
 
-require_once ("MySQLDatabase.php");
+require_once("MySQLDatabase.php");
+require_once("problemaDan.php");
 
 if(isset($database)) {echo "true";} else {echo "false";}
 echo "<br/>";
 
 $sql = "INSERT INTO angajati (nume_angajat,nume_echipa,data_angajare,tip_angajat)";
-$sql .= " VALUES ( 'Mircea','OM1',now(),'ROOKIE')";
+$sql .= " VALUES ( 'Mirceaa','OM1',now(),'ROOKIE')";
 //echo $sql;
 $mysqlConnection = new MySQLDatabase();
 
 
 
-//$result = $mysqlConnection->query($sql);
+$result = $mysqlConnection->query($sql);
 
 
-$sql2 = 'SELECT * FROM angajati';
+//$sql2 = 'SELECT * FROM angajati';
+//
+//$result = $mysqlConnection->query($sql2);
+//
+//$a=mysqli_fetch_all($result, MYSQLI_ASSOC);
+//var_dump($a); die();
+//foreach ($a as $currentRow) {
+//    foreach ($currentRow as $key => $value)
+//    echo $key . ' = '. $value . '<br/>';
+}
 
+$sql = $departament1->getNrMembri();
 $result = $mysqlConnection->query($sql2);
 
 $a=mysqli_fetch_all($result, MYSQLI_ASSOC);
 var_dump($a); die();
 foreach ($a as $currentRow) {
     foreach ($currentRow as $key => $value)
-    echo $key . ' = '. $value . '<br/>';
+        echo $key . ' = '. $value . '<br/>';
 }
+
+
 
 //echo $database->mysql_prep("It's Working ?<br/>");
 //$sql = "select * from angajati";
