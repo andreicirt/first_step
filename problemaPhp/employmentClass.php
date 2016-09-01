@@ -8,15 +8,18 @@
  */
 
 require_once('MySQLDatabase.php');
+require_once ('TeamClass.php');
+
 
 class Employment
 {
     protected $name;
     protected $teamName;
 
-    public function getSeniorityFromDb ()
+    public function getEldershipFromDb()
     {
-        return "select DATEDIFF(NOW(),i.data_angajare) from angajati i where i.nume_angajat={$this->getName()}";
+        $sql =  "select DATEDIFF(NOW(),i.data_angajare) from angajati i where i.nume_angajat={$this->getName()}";
+        return $sql;
     }
 
     public function getName()
@@ -34,16 +37,15 @@ class Employment
         $this->teamName = $team;
     }
 
+    public function getTeam()
+    {
+        return $this->teamName;
+    }
+
     public function InsertEmployeeToDb()
     {
         $sql = "INSERT INTO angajati (nume_angajat,nume_echipa,tip_angajat,id_manager,data_angajare)";
         $sql .= " VALUES ( {$this->getName()},{$this->getTeam()},{$this->getRank()},'18',now())";
     }
-
-    public function getTeam()
-    {
-        return $this->teamName;
-    }
 }
 
-}

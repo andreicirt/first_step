@@ -9,12 +9,14 @@
 
 require_once('MySQLDatabase.php');
 require_once('ManagerClass.php');
-require_once ('EmploymentClass.php');
+require_once('EmploymentClass.php');
+require_once ('TeamClass.php');
+
 
 class Department
 {
     protected $depName;
-    protected $teamNr;
+    protected $teamsNr;
     protected $teams = array();
 
     public function setDepName($dep)
@@ -24,12 +26,12 @@ class Department
 
     public function getTeamNr()
     {
-        return $this->teamNr = count($this->teams);
+        return $this->teamsNr = count($this->teams);
     }
 
     public function setTeamNr($teams)
     {
-        $this->teamNr = $teams;
+        $this->teamsNr = $teams;
     }
 
     public function getTeamNrFromDb()

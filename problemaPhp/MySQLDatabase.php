@@ -59,6 +59,13 @@ class MySQLDatabase
         return $escaped_string;
     }
 
+    public function queryBuilder ()
+    {
+
+
+
+    }
+
 }
 
 //$database = new MySQLDatabase();

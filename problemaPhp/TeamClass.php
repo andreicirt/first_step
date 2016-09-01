@@ -7,6 +7,7 @@
  * Time: 14:47
  */
 
+require_once ('EmploymentClass.php');
 
 
 class Team
@@ -15,8 +16,10 @@ class Team
     protected $membersNr;
     protected $members = array();
 
-    public function getMembersNrFromDb(){
+    public function getMembersNrFromDb()
+    {
         $sql = "select count(*) from angajati v1 where v1.nume_echipa='{$this->getTeamName()}'";
+        return $sql;
     }
 
     public function getTeamName()

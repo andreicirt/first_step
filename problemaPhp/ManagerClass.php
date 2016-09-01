@@ -8,7 +8,8 @@
  */
 
 require_once('MySQLDatabase.php');
-require_once('EmploymentClass.php')
+require_once('EmploymentClass.php');
+
 
 class Manager
 {
@@ -19,15 +20,15 @@ class Manager
     public function getSubordinatesNrfromDb()
     {
         return "select count(*)
-                    from angajati v
-                    inner join echipe b
-                    on v.id_manager=b.id_manager
-                    and b.manager_echipa='{$this->getName()}'";
+                from angajati v
+                inner join echipe b
+                on v.id_manager=b.id_manager
+                and b.manager_echipa='{$this->getName()}'";
     }
 
     public function getRank()
     {
-        $this->rank;
+       return $this->rank;
     }
 
     public function setRank($rang)
@@ -51,14 +52,15 @@ class Manager
         $this->subordinates = $subs;
     }
 
-    function getSubordinatesFromDb ()
+    function getSubordinatesFromDb()
     {
         $sql = "select i1.nume_angajat
-from angajati i1
-inner join echipe vv
-on i1.id_manager=vv.id_manager
-where i1.id_angajat !=vv.id_manager
-and vv.manager_echipa='{$this->getName()}'";
+                from angajati i1
+                inner join echipe vv
+                on i1.id_manager=vv.id_manager
+                where i1.id_angajat !=vv.id_manager
+                and vv.manager_echipa='{$this->getName()}'";
+        return $sql ;
     }
 
     public function addSubordinate(Employment $employee)
@@ -69,7 +71,7 @@ and vv.manager_echipa='{$this->getName()}'";
 
     public function getSubordinatesNr()
     {
-        $this->subordinatesNr;
+        return $this->subordinatesNr;
     }
 
     public function setSubordinatesNr($number)
