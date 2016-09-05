@@ -23,43 +23,43 @@ $angajat4->setName('Cornel');
 
 $angajat1 = new Employment();
 $angajat1->setName('mihai');
-$angajat1->getEldershipFromDb('1');
+$angajat1->getEldershipFromDb();
 
 $angajat2 = new Employment();
 $angajat2->setName('cristi');
-$angajat2->getEldershipFromDb(2);
+$angajat2->getEldershipFromDb();
 
 $angajat3 = new Employment();
 $angajat3->setName('Flore');
-$angajat3->getEldershipFromDb(2);
+$angajat3->getEldershipFromDb();
 
 
-$echipa1 = new Employment();
-$echipa1->setTeam('OM');
-$echipa1->addMembri($angajat2);
-$echipa1->addMembri($angajat3);
-$echipa1->addMembri($angajat4);
+$echipa1 = new Team();
+$echipa1->setTeamName('OM');
+$echipa1->addMember($angajat2);
+$echipa1->addMember($angajat3);
+$echipa1->addMember($angajat4);
 
 
-$echipa2 = new Employment();
-$echipa2->setNumeEchipa('DMS');
-$echipa2->addMembri($angajat1);
+$echipa2 = new Team();
+$echipa2->setTeamName('DMS');
+$echipa2->addMember($angajat1);
 
 
 $departament1 = new Department();
-$departament1->setNumeDep('Programare');
-$departament1->addEchipa($echipa1);
-$departament1->addEchipa($echipa2);
+$departament1->setDepName('Programare');
+$departament1->addTeam($echipa1);
+$departament1->addTeam($echipa2);
 
 
 
 $manager1 = new Manager();
-$manager1->setName('vasilica');
-$manager1->getEldershipFromDb(5);
+//$manager1->setName('vasilica');
+//$manager1->set();
 $manager1->setRank('CEO');
-$manager1->addSubaltern($angajat1);
-$manager1->addSubaltern($angajat2);
-$manager1->addSubaltern($angajat3);
+$manager1->addSubordinate($angajat1);
+$manager1->addSubordinate($angajat2);
+$manager1->addSubordinate($angajat3);
 
 
 

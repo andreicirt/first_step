@@ -37,7 +37,6 @@ class MySQLDatabase
             mysqli_close($this->connection);
             unset($this->connection);
         }
-
     }
 
     public function query ($sql)
@@ -68,5 +67,5 @@ class MySQLDatabase
 
 }
 
-//$database = new MySQLDatabase();
-//$db =& $database;
+$database = new MySQLDatabase();
+$db =& $database;
