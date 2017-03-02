@@ -16,13 +16,13 @@ if (!isset($layout_context)) {
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
-<head>
-    <title>Employment APP <?php if ($layout_context == "admin") { echo "Admin"; } ?></title>
-    <link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="header">
-    <h1> <?php if ($layout_context == "admin") { echo "Admin"; } ?></h1>
-</div>
+    <head>
+         <title>Employment APP <?php if ($layout_context == "admin") { echo "Admin"; } ?></title>
+            <link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="header">
+            <h1> <?php if ($layout_context == "admin") { echo "Admin"; } ?></h1>
+         </div>
 
 

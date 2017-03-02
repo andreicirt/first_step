@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
             // Mark user as logged in
             $_SESSION["admin_id"] = $found_admin["id"];
             $_SESSION["username"] = $found_admin["username"];
-            redirect_to("admin.php");
+            redirect_to("super_admin.php");
         } else {
             // Failure
             $_SESSION["message"] = "Username/password not found.";
@@ -45,24 +45,27 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<?php $layout_context = "admin"; ?>
+<?php $layout_context = "Owner"; ?>
 <?php include("layouts/header.php"); ?>
 <div id="main">
     <div id="navigation">
         &nbsp;
     </div>
     <div id="page">
-        <?php echo message(); ?>
+        <div id="test" >
+            <?php echo message(); ?>
+            <?php echo form_errors($errors); ?>
         <h2>Login</h2>
-        <form action="login.php" method="post">
+        <form action="login.php" method="post" >
             <p>Username:
                 <input type="text" name="username" value="<?php echo htmlentities($username); ?>" />
             </p>
             <p>Password:
                 <input type="password" name="password" value="" />
             </p>
-            <input type="submit" name="submit" value="Submit" />
+            <button class="button button1" type="submit" name="submit"> Log In </button>
         </form>
+        </div>
     </div>
 </div>
 <?php include("layouts/footer.php"); ?>

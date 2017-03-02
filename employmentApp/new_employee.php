@@ -26,12 +26,14 @@ if (isset($_POST['submit'])) {
         // Perform Create
 
         $username = mysql_prep($_POST["username"]);
+        $team = mysql_prep($_POST["team"]);
+        $role = mysql_prep($_POST["role"]);
         $hashed_password = password_encrypt($_POST["password"]);
 
         $query  = "INSERT INTO employment (";
-        $query .= "  username, hashed_password";
+        $query .= "  username, team, role, hashed_password";
         $query .= ") VALUES (";
-        $query .= "  '{$username}', '{$hashed_password}'";
+        $query .= "  '{$username}', '{$team}','{$role}' ,'{$hashed_password}'";
         $query .= ")";
         $result = mysqli_query($connection, $query);
 
@@ -50,30 +52,44 @@ if (isset($_POST['submit'])) {
 } // end: if (isset($_POST['submit']))
 
 ?>
-
-<?php $layout_context = "admin"; ?>
+<?php $teamNames = find_team_from_db();
+     $layout_context = "new_employee"; ?>
 <?php include("layouts/header.php"); ?>
 <div id="main">
     <div id="navigation">
         &nbsp;
     </div>
     <div id="page">
+        <div id="test" >
         <?php echo message(); ?>
         <?php echo form_errors($errors); ?>
-
         <h2>Create Employee</h2>
         <form action="new_employee.php" method="post">
             <p>Username:
                 <input type="text" name="username" value="" />
+            <p>Role:
+                <select name="role" >
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="SUPER_ADMIN">SUPER_ADMIN</option>
+                </select>
+            </p>
+            <p>Team:
+                <select name="team" >
+                    <?php while($team = mysqli_fetch_assoc($teamNames)) { ?>
+                        <option value=" <?php echo htmlentities($team["team_name"]);?>" > <?php echo htmlentities($team["team_name"]);?> </option>
+                    <?php } ?>
+                </select>
             </p>
             <p>Password:
                 <input type="password" name="password" value="" />
             </p>
-            <input type="submit" name="submit" value="Create Employee" />
+            <br><br>
+            <button class="button button1" type="submit" name="submit" >Create Employee </button>
         </form>
         <br />
-        <a href="super_admin.php">Cancel</a>
+            <br><br>
+        <a href="super_admin.php" class="button button1" role="button">Cancel</a>
     </div>
 </div>
-<?php include("layouts/footer.php"); ?>
-
+    <?php include("layouts/footer.php"); ?>

@@ -75,6 +75,8 @@ function confirm_query($result_set) {
 function password_check($password, $existing_hash) {
     // existing hash contains format and salt at start
     $hash = crypt($password, $existing_hash);
+    var_dump($existing_hash);
+    var_dump($hash);
     if ($hash === $existing_hash) {
         return true;
     } else {
@@ -132,7 +134,7 @@ function find_all_admins() {
 
     $query  = "SELECT * ";
     $query .= "FROM employment ";
-    $query .= "WHERE role = '[\"ROLE_ADMIN\"]'";
+    $query .= "WHERE role = 'ADMIN'";
     $admin_set = mysqli_query($connection, $query);
     confirm_query($admin_set);
     return $admin_set;
@@ -140,13 +142,12 @@ function find_all_admins() {
 
 function find_admin_by_username($username) {
      $connection = Connect();
-
     $safe_username = mysqli_real_escape_string($connection, $username);
 
     $query  = "SELECT * ";
     $query .= "FROM employment ";
     $query .= "WHERE username = '{$safe_username}' ";
-    $query .="and role = '[\"ROLE_ADMIN\"]'";
+    $query .= "and role = 'ADMIN'";
     $query .= "LIMIT 1";
     $admin_set = mysqli_query($connection, $query);
     confirm_query($admin_set);
@@ -155,7 +156,9 @@ function find_admin_by_username($username) {
     } else {
         return null;
     }
+
 }
+
 
 function logged_in() {
     return isset($_SESSION['admin_id']);
@@ -163,7 +166,7 @@ function logged_in() {
 
 function confirm_logged_in() {
     if (!logged_in()) {
-        redirect_to("login.php");
+        redirect_to("super_admin.php");
     }
 }
 
@@ -233,8 +236,21 @@ function find_all() {
 
     $query  = "SELECT * ";
     $query .= "FROM employment ";
+    $query .= "WHERE leave_date is NULL";
     $admin_set = mysqli_query($connection, $query);
     confirm_query($admin_set);
     return $admin_set;
 }
+
+function find_team_from_db(){
+    $connection = Connect();
+
+    $query  = "SELECT * ";
+    $query .= "FROM teams ";
+    $teams = mysqli_query($connection, $query);
+    confirm_query($teams);
+    return $teams;
+}
+
+
 

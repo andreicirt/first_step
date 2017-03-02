@@ -7,9 +7,10 @@
  */
 ?>
 
-<div id="footer" style="align-items: center">Employment <?php echo date("Y"); ?>, App</div>
+<div id="footer" style="border-bottom-color: white">Employment <?php echo date("Y"); ?>, App</div>
 
-
+    </body>
+</html>
 <?php
 // Close database connection
 if (isset($connection)) {
