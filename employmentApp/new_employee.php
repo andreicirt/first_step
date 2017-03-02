@@ -27,13 +27,13 @@ if (isset($_POST['submit'])) {
 
         $username = mysql_prep($_POST["username"]);
         $team = mysql_prep($_POST["team"]);
-        $role = mysql_prep($_POST["role"]);
+        $rank = mysql_prep($_POST["rank"]);
         $hashed_password = password_encrypt($_POST["password"]);
 
         $query  = "INSERT INTO employment (";
-        $query .= "  username, team, role, hashed_password";
+        $query .= "  username, team, rank , hire_date , hashed_password";
         $query .= ") VALUES (";
-        $query .= "  '{$username}', '{$team}','{$role}' ,'{$hashed_password}'";
+        $query .= "  '{$username}', '{$team}','{$rank}' , NOW(), '{$hashed_password}'";
         $query .= ")";
         $result = mysqli_query($connection, $query);
 
@@ -67,11 +67,11 @@ if (isset($_POST['submit'])) {
         <form action="new_employee.php" method="post">
             <p>Username:
                 <input type="text" name="username" value="" />
-            <p>Role:
-                <select name="role" >
-                    <option value="USER">USER</option>
-                    <option value="ADMIN">ADMIN</option>
-                    <option value="SUPER_ADMIN">SUPER_ADMIN</option>
+            <p>Rank:
+                <select name="rank" >
+                    <option value="ROOKIE">ROOKIE</option>
+                    <option value="TLEAD">TLEAD</option>
+                    <option value="MANAGER">MANAGER</option>
                 </select>
             </p>
             <p>Team:

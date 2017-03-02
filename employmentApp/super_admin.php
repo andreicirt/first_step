@@ -38,7 +38,7 @@
                     <tr>
                         <td><?php echo htmlentities($admin["username"]); ?></td>
                         <td><?php echo htmlentities($admin["team"]); ?></td>
-                        <td><?php echo htmlentities($admin["role"]); ?></td>
+                        <td><?php echo htmlentities($admin["rank"]); ?></td>
                         <td><a href="edit_employee.php" class="button_sml button2">Edit </a>
                             <a href="remove_employee.php?id=<?php echo urlencode($admin["id"]); ?>"
                                class="button_sml button2" onclick="return confirm('Are you sure?');">Delete</a></td>
@@ -51,9 +51,3 @@
         </div>
     </section>
 <?php include("layouts/footer.php"); ?>
-
-
-
-
-
-

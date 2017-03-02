@@ -26,7 +26,7 @@
   if ($result && mysqli_affected_rows($connection) == 1) {
       // Success
       $_SESSION["message"] = "Admin deleted.";
-      redirect_to("manage_admins.php");
+      redirect_to("super_admin.php");
   } else {
       // Failure
       $_SESSION["message"] = "Admin deletion failed.";

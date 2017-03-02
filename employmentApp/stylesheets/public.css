@@ -76,7 +76,7 @@ div.message {
     color: red; font-weight: bold;
     margin: 1em 0 ; padding: 1em;
     display: inline-block;
-
+    text-align: center;
 }
 
 /* errors */
