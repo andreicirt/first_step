@@ -39,8 +39,6 @@ if (isset($_POST['submit'])) {
                 redirect_to("admin.php");
             } elseif ($found_admin['rank'] == 'ROOKIE'){
                 redirect_to("user.php");
-            } else {
-                echo "Nu Am gasit functia ta";
             }
 
         } else {

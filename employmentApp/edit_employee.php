@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
         <?php echo message(); ?>
         <?php echo form_errors($errors); ?>
 
-        <h2>Edit Admin: <?php echo htmlentities($admin["username"]); ?></h2>
+        <h2>Edit Contact: <?php echo htmlentities($admin["username"]); ?></h2>
         <form action="edit_admin.php?id=<?php echo urlencode($admin["id"]); ?>" method="post">
             <p>Username:
                 <input type="text" name="username" value="<?php echo htmlentities($admin["username"]); ?>" />
