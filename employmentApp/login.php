@@ -32,7 +32,17 @@ if (isset($_POST['submit'])) {
             // Mark user as logged in
             $_SESSION["admin_id"] = $found_admin["id"];
             $_SESSION["username"] = $found_admin["username"];
-            redirect_to("super_admin.php");
+
+            if ($found_admin['rank'] == 'MANAGER'){
+                redirect_to("super_admin.php");
+            } elseif ($found_admin['rank'] == 'TLEAD'){
+                redirect_to("admin.php");
+            } elseif ($found_admin['rank'] == 'ROOKIE'){
+                redirect_to("user.php");
+            } else {
+                echo "Nu Am gasit functia ta";
+            }
+
         } else {
             // Failure
             $_SESSION["message"] = "Username/password not found.";

@@ -72,10 +72,10 @@ section{
 }
 
 div.message {
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     color: red; font-weight: bold;
     margin: 1em 0 ; padding: 1em;
-    display: inline-block;
+    display: block;
     text-align: center;
 }
 

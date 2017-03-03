@@ -11,8 +11,8 @@
  require_once("methods.php");
 
  // confirm_logged_in();
-  $admin_set = find_all();
- $layout_context = "super_admin"; ?>
+    $admin_set = find_all();
+    $layout_context = "super_admin"; ?>
 <?php include("layouts/header.php"); ?>
 <section>
     <div style="float:right ">
@@ -31,8 +31,10 @@
             </thead>
         </table>
     </div>
-    <div class="tbl-content">
+    <div class="tbl-content" >
+        <div id="message">
         <?php echo message(); ?>
+        </div>
         <table cellpadding="0" cellspacing="0" border="0">
                 <?php while($admin = mysqli_fetch_assoc($admin_set)) { ?>
                     <tr>

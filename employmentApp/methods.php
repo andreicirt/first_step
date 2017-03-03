@@ -2,9 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: andrei.cirt
- * Date: 2/22/2017
- * Time: 14:13
+ * Date: 3/3/2017
+ * Time: 13:45
  */
+
 
 require_once ("connection.php");
 
@@ -129,25 +130,25 @@ function attempt_login($username, $password) {
     }
 }
 
-function find_all_admins() {
-    $connection = Connect();
-
-    $query  = "SELECT * ";
-    $query .= "FROM employment ";
-    $query .= "WHERE role = 'ADMIN'";
-    $admin_set = mysqli_query($connection, $query);
-    confirm_query($admin_set);
-    return $admin_set;
-}
+//function find_all_admins() {
+//    $connection = Connect();
+//
+//    $query  = "SELECT * ";
+//    $query .= "FROM employment ";
+//    $query .= "WHERE rank = 'ADMIN'";
+//    $admin_set = mysqli_query($connection, $query);
+//    confirm_query($admin_set);
+//    return $admin_set;
+//}
 
 function find_admin_by_username($username) {
-     $connection = Connect();
+    $connection = Connect();
     $safe_username = mysqli_real_escape_string($connection, $username);
 
     $query  = "SELECT * ";
     $query .= "FROM employment ";
     $query .= "WHERE username = '{$safe_username}' ";
-    $query .= "and role = 'ADMIN'";
+//    $query .= "and role = 'ADMIN'";////
     $query .= "LIMIT 1";
     $admin_set = mysqli_query($connection, $query);
     confirm_query($admin_set);
@@ -251,6 +252,3 @@ function find_team_from_db(){
     confirm_query($teams);
     return $teams;
 }
-
-
-

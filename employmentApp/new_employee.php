@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
     $fields_with_max_lengths = array("username" => 30);
     validate_max_lengths($fields_with_max_lengths);
 
+
     if (empty($errors)) {
         // Perform Create
 

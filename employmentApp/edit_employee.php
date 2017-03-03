@@ -8,6 +8,7 @@
 
     require_once("connection.php");
     require_once("methods.php");
+
     confirm_logged_in();
 
 
