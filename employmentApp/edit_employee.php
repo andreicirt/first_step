@@ -6,10 +6,10 @@
  * Time: 13:46
  */
 
-    require_once("connection.php");
-    require_once("methods.php");
+require_once("connection.php");
+require_once("methods.php");
+confirm_logged_in();
 
-    confirm_logged_in();
 
 
 $admin = find_admin_by_id($_GET["id"]);
@@ -17,8 +17,9 @@ $admin = find_admin_by_id($_GET["id"]);
 if (!$admin) {
     // admin ID was missing or invalid or
     // admin couldn't be found in database
-    redirect_to("manage_admins.php");
+    redirect_to("super_admin.php");
 }
+$connection = Connect();
 
 if (isset($_POST['submit'])) {
     // Process the form
@@ -81,7 +82,7 @@ if (isset($_POST['submit'])) {
             <input type="submit" name="submit" value="Edit Admin" />
         </form>
         <br />
-        <a href="manage_admins.php">Cancel</a>
+        <a href="super_admin.php">Cancel</a>
     </div>
 </div>
 <?php include("layouts/footer.php"); ?>

@@ -18,7 +18,9 @@
       // admin couldn't be found in database
       redirect_to("super_admin.php");
   }
+
   $connection = Connect();
+
   $id = $admin["id"];
   $query = "UPDATE `problemaphp`.`employment` SET leave_date = NOW() WHERE  id= {$id} LIMIT 1";
   $result = mysqli_query($connection, $query);
